@@ -1,0 +1,66 @@
+{% extends "topic/base.html" %}
+{% block title %}详情{% endblock %}
+{% block main %}
+    <div id="main">
+        <div id="sidebar">
+            <div class="panel">
+                <div class="header">
+                    <span class="col_fade">个人信息</span>
+                </div>
+                <div class="inner">
+                    <div class="user_card">
+                        <div>
+                            <a class="user_avatar">
+                                <img src="{{ user.image }}">
+                            </a>
+                            <span class="user_name"><a class="dark">{{ user.username }}</a></span>
+
+                            <div class="board clearfix">
+                                <div class="floor">
+                                    <span class="big">积分: 0 </span>
+                                </div>
+                            </div>
+                            <div class="space clearfix"></div>
+                            <span class="signature">
+                        “
+
+                            {{ user.sign }}
+
+                        ”
+                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="inner">
+                    <a href="/topic" id="create_topic_btn">
+                        <span class="span-success">发布话题</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id='content'>
+            <div class='panel'>
+                <div class='header'>
+                    <ul class='breadcrumb'>
+                        <li><a href='/message'>更多</a><span class='divider'>/</span></li>
+                    </ul>
+                </div>
+                <div class='inner userinfo'>
+                    <div class='user_big_avatar'>
+                        <img src="{{ sender.image }}" class="user_big_avatar" title="{{ sender.username }}">
+                    </div>
+                    <span style="font-size: 13px">主题：</span>
+                    <span class="dark">{{ message.title }}</span>
+{#                    <p class="col_fade">内容：</p>#}
+                    <p class="col_fade"><span style="font-size: 13px">内容：</span>{{ message.content }}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

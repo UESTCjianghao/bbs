@@ -1,0 +1,99 @@
+{% extends "topic/base.html" %}
+{% block title %}私信{% endblock %}
+{% block main %}
+    <div id="main">
+        <div id="sidebar">
+            <div class="panel">
+                <div class="header">
+                    <span class="col_fade">个人信息</span>
+                </div>
+                <div class="inner">
+                    <div class="user_card">
+                        <div>
+                            <a class="user_avatar">
+                                <img src="{{ user.image }}">
+                            </a>
+                            <span class="user_name"><a class="dark" href="/profile">{{ user.username }}</a></span>
+
+                            <div class="board clearfix">
+                                <div class="floor">
+                                    <span class="big">积分: 0 </span>
+                                </div>
+                            </div>
+                            <div class="space clearfix"></div>
+                            <span class="signature">
+                                “
+
+                                    {{ user.sign }}
+
+                                ”
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="inner">
+                    <a href="/topic" id="create_topic_btn">
+                        <span class="span-success">发布话题</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id='content'>
+            <div class='panel'>
+                <div class='header'>
+                    <ul class='breadcrumb'>
+                        <a>发送邮件</a>
+                    </ul>
+                </div>
+                <div class='inner userinfo'>
+                    <form method="post" action="{{ url_for('.add') }}">
+                        <input type="text" name="receiver_id" placeholder="receiver_id">
+                        <br>
+                        <input type="text" name="title" placeholder="title">
+                        <br>
+                        <input type="text" name="content" placeholder="content" size="50"
+                               style="width: 400px;height: 50px">
+                        <br>
+                        <button type="submit">发送邮件</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class='panel'>
+                <div class='header'>
+                    <span class='col_fade'>收信</span>
+                </div>
+                {% for r in received %}
+                    <div class="cell">
+                        <div class="topic_title_wrapper">
+                            <a class="topic_title" href="{{ url_for('.view', id = r.id) }}">
+                                {{ r.title }}
+                            </a>
+                        </div>
+                        <span>{{ r.created_time | format_time }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class='panel'>
+                <div class='header'>
+                    <span class='col_fade'>发信</span>
+                </div>
+                {% for s in send %}
+                    <div class="cell">
+
+                        <div class="topic_title_wrapper">
+                            <a class="topic_title" href="{{ url_for('.view', id = s.id) }}">
+                                {{ s.title }}
+                            </a>
+                        </div>
+                        <span>{{ s.created_time | format_time }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

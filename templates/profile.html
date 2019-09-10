@@ -1,0 +1,138 @@
+{% extends "topic/base.html" %}
+{% block title %}个人资料{% endblock %}
+{% block main %}
+    <div id="main">
+        <div>
+            <div id="sidebar">
+                <div class="panel">
+                    <div class="header">
+                        <span class="col_fade">个人信息</span>
+                    </div>
+                    <div class="inner">
+                        <div class="user_card">
+                            <div>
+                                <a class="user_avatar">
+                                    <img src="{{ user.image }}">
+                                </a>
+                                <span class="user_name"><a class="dark">{{ user.username }}</a></span>
+
+                                <div class="board clearfix">
+                                    <div class="floor">
+                                        <span class="big">积分: 0 </span>
+                                    </div>
+                                </div>
+                                <div class="space clearfix"></div>
+                                <span class="signature">
+                                “
+
+                                    {{ user.sign }}
+
+                                ”
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="inner">
+                        <a href="/topic" id="create_topic_btn">
+                            <span class="span-success">发布话题</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id='content'>
+                <div class='panel'>
+                    <div class='header'>
+                        <ul class='breadcrumb'>
+                            <li><a href='/topic'>主页</a><span class='divider'>/</span></li>
+                        </ul>
+                    </div>
+                    <div class='inner userinfo'>
+                        <div class='user_big_avatar'>
+                            <img src="{{ user.image }}" class="user_big_avatar" title="{{ user.username }}">
+                        </div>
+                        <a class="dark">{{ user.username }}</a>
+
+                        <p class="col_fade">{{ user.created_time | format_time }}</p>
+
+                    </div>
+                </div>
+
+                <div class='panel'>
+                    <div class='header'>
+                        <span class='col_fade'>最近创建的话题</span>
+                    </div>
+
+                    {# 创建话题版面 #}
+                    {% for t in created %}
+                        <div class="cell">
+
+                            <a class="user_avatar pull-left">
+                                <img src="{{ user.image }}">
+                            </a>
+
+                            <span class="reply_count pull-left">
+                        <span class="count_of_replies" title="回复数">
+                            {{ t.replies() | count }}
+                        </span>
+                        <span class="count_seperator">/</span>
+                        <span class="count_of_visits" title="点击数">
+                            {{ t.views }}
+                        </span>
+                    </span>
+
+
+                            <a class="last_time pull-right">
+                                <img class="user_small_avatar" src="{{ user.image }}">
+                                <span class="last_active_time">{{ t.created_time | format_time }}</span>
+                            </a>
+
+                            <div class="topic_title_wrapper">
+                                <a class="topic_title" href="{{ url_for('topic.detail', id=t.id) }}">
+                                    {{ t.title }}
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+
+                <div class='panel'>
+                    <div class='header'>
+                        <span class='col_fade'>最近参与的话题</span>
+                    </div>
+                    {# 参与话题版面 #}
+                    {% for r in replied %}
+                        <div class="cell">
+
+                    <span class="reply_count pull-left">
+                        <span class="count_of_replies" title="回复数">
+                            {{ r.replies() | count }}
+                        </span>
+                        <span class="count_seperator">/</span>
+                        <span class="count_of_visits" title="点击数">
+                            {{ r.views }}
+                        </span>
+                    </span>
+
+
+                            <a class="last_time pull-right">
+                                <span class="last_active_time">{{ r.created_time | format_time }}</span>
+                            </a>
+
+                            <div class="topic_title_wrapper">
+
+                                <a class="topic_title" href="{{ url_for('topic.detail', id=r.id) }}">
+                                    {{ r.title }}
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

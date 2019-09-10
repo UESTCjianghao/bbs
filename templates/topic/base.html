@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    {#    <link rel="stylesheet" href="/static/css/fixed_bottom.css">#}
+    <head>
+<body>
+
+<!-- navbar -->
+<div class='navbar'>
+    <div class='navbar-inner'>
+        <div class='container'>
+            <ul class='nav pull-right'>
+                <li><a href='/topic'>首页</a></li>
+
+                <li><a href='/profile'>个人</a></li>
+                {#        <li><a href='/api'>API</a></li>#}
+                {##}
+                <li><a href="/message" target="">私信</a></li>
+                <li><a href="/setting" target="">设置</a></li>
+
+                <li><a href='/register/view'>注册</a></li>
+                <li><a href='/'>登录</a></li>
+
+            </ul>
+            <a class="btn btn-navbar" id="responsive-sidebar-trigger">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% block main %}
+{% endblock %}
+<div class="bottom">
+    <a href="http://beian.miit.gov.cn" target="_blank">
+        <center>蜀ICP备19028454号-1</center>
+    </a>
+</div>
+
+</body>

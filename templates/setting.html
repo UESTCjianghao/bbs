@@ -1,0 +1,92 @@
+{% extends "topic/base.html" %}
+{% block title %}个人信息{% endblock %}
+{% block main %}
+    <div id="main">
+        {#边栏#}
+        <div id="sidebar">
+            <div class="panel">
+                <div class="header">
+                    <span class="col_fade">个人信息</span>
+                </div>
+                <div class="inner">
+                    <div class="user_card">
+                        <div>
+                            <a class="user_avatar">
+                                <img src="{{ user.image }}">
+                            </a>
+                            <span class="user_name"><a class="dark">{{ user.username }}</a></span>
+
+                            <div class="board clearfix">
+                                <div class="floor">
+                                    <span class="big">积分: 0 </span>
+                                </div>
+                            </div>
+                            <div class="space clearfix"></div>
+                            <span class="signature">
+                                “
+
+                                    {{ user.sign }}
+
+                                ”
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="inner">
+                    <a href="/topic" id="create_topic_btn">
+                        <span class="span-success">发布话题</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {#内容栏#}
+        <div id="content">
+            {#用户名修改#}
+            <div class='panel'>
+                <div class="header">
+                    <span class="col_fade">基础信息</span>
+                </div>
+                <div class="inner">
+                    <form method="post" action="{{ url_for('setting.re_info') }}">
+                        <label class="control-label">用户名</label>
+                        <input type="text" class="input-xlarge" name="username">
+                        <label class="control-label">个人介绍</label>
+                        <input type="text" class="input-xlarge" name="sign">
+                        <button type="submit">提交</button>
+                    </form>
+                </div>
+            </div>
+            {#密码修改#}
+            <div class='panel'>
+                <div class="header">
+                    <span class="col_fade">修改密码</span>
+                </div>
+                <div class="inner">
+                    <form method="post" action="/setting/password">
+                        <input type="text" class="input-xlarge" name="password">
+                        <button type="submit">提交</button>
+                    </form>
+                </div>
+            </div>
+            {#头像修改#}
+            <div class='panel'>
+                <div class="header">
+                    <span class="col_fade">设置头像</span>
+                </div>
+                <div class="inner">
+                    <form method="post"
+                          action="{{ url_for('setting.avatar_add') }}"
+                          enctype="multipart/form-data"
+                    >
+                        <input type="file" name="avatar">
+                        <button type="submit">上传头像</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#    <img src="{{ user.image }} ">#}
+{% endblock %}

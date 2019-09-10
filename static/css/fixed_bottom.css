@@ -1,0 +1,11 @@
+.bottom-fixed {
+    /*position: fixed;*/
+    z-index: 9;
+    width: 100%;
+    position: relative;
+    background: #444444;
+    font-size: 13px;
+    bottom: 0px;
+    left: 0px;
+    text-align: center;
+}

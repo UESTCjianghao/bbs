@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+    <title>Forgot Password</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="/static/css-1/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/css-1/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/css-1/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/css-1/templatemo_style.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body class="templatemo-bg-gray">
+<div class="container">
+    <div class="col-md-12">
+        <h1 class="margin-bottom-15">Password Reset</h1>
+        <form class="form-horizontal templatemo-forgot-password-form templatemo-container" role="form"
+              action="/reset/update" method="post">
+            <div class="form-group">
+                <div class="col-md-12">
+                    Please enter your password that you can remember.
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="control-wrapper">
+                    {#		            	<label for="password" class="control-label fa-label"><i class="fa fa-lock fa-medium"></i></label>#}
+                    <input type="password" class="form-control" id="password" placeholder="password" name="password">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="submit" value="Submit" class="btn btn-danger">
+                    <br><br>
+                    <a href="/">or Login</a>
+                    {#                    <a href="login-2.html">Login Two</a>#}
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="bottom">
+    <a href="http://beian.miit.gov.cn" target="_blank">
+        <center>蜀ICP备19028454号-1</center>
+    </a>
+</div>
+</body>
+</html>

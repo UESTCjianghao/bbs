@@ -3,3 +3,4 @@
 secret.py
 database_secret.conf
 config.py
+*.7z
